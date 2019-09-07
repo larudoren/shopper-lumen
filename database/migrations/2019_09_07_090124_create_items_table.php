@@ -14,9 +14,10 @@ class CreateItemsTable extends Migration
     public function up()
     {
         Schema::create('items', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->engine = 'InnoDB';
+            $table->increments('id');
             $table->integer('user_id')->nullable()->unsigned();
-            $table->integer('category_id');
+            $table->integer('category_id')->nullable()->unsigned();
             $table->string('name');
             $table->string('description');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

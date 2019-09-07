@@ -14,7 +14,8 @@ class CreateCategoriesTable extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->engine = 'InnoDB';
+            $table->increments('id')->unsigned();
             $table->integer('user_id')->nullable()->unsigned();
             $table->string('name');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
